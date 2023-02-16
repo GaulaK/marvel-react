@@ -1,0 +1,52 @@
+@import "../../App.css";
+
+header {
+  background-color: var(--black);
+  position: fixed;
+  width: 100%;
+}
+
+.header--container {
+  /* border: 1px solid red; */
+  margin: 0 auto;
+  max-width: 1440px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo--container {
+  /* background-color: purple; */
+  max-width: 150px;
+  max-height: 60px;
+  max-height: 100%;
+  margin-left: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo--container img {
+  max-width: 100%;
+}
+
+.navigation-bar {
+  /* background-color: green; */
+  height: 100%;
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 50%;
+}
+
+.navigation-button {
+  text-decoration: none;
+  background-color: var(--red);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+}

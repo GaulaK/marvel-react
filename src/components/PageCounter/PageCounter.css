@@ -1,0 +1,30 @@
+.page-counter {
+  border: 1px solid salmon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.page-counter .arrow-icon {
+  font-size: 32px;
+  color: var(--red);
+  background-color: white;
+  border-radius: 50%;
+  padding: 1px;
+}
+
+.page-counter p {
+  color: white;
+  font-size: 42;
+  font-weight: bold;
+}
+
+.page-counter--container {
+  border: 1px solid green;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

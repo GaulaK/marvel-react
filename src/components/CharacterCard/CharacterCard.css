@@ -1,0 +1,28 @@
+.character-card {
+  width: auto;
+}
+
+.character-card--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  /* border: 1px solid red; */
+  -webkit-box-shadow: 0px 0px 50px 6px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 0px 50px 6px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.character-card--container:hover {
+  -webkit-box-shadow: 0px 0px 50px 6px rgba(238, 23, 31, 0.4);
+  box-shadow: 0px 0px 50px 6px rgba(238, 23, 31, 0.4);
+}
+
+.character-card-image--container {
+  width: 100px;
+  height: 100px;
+  margin: 15px 0;
+  border: 1px #000000 solid;
+}

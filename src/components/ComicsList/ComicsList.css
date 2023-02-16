@@ -1,0 +1,48 @@
+.comics-character--list {
+  padding-bottom: 1px;
+}
+
+.comics-character--list
+  .comic-character--container
+  .comic-character--details
+  h3 {
+  text-align: left;
+  font-weight: 700;
+}
+
+.comics-character--list .comic-character--container {
+  margin: 50px 0;
+  max-width: 100%;
+  /* border: solid 1px blue; */
+  min-height: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* align-items: center; */
+}
+
+.comics-character--list .comic-character--container .image--container {
+  max-width: 168px;
+  height: 252px;
+  border: 1px solid var(--red);
+}
+
+.comics-character--list .comic-character--container .comic-character--details {
+  /* border: 1px solid green; */
+  min-height: 252px;
+  margin: 0 30px;
+  flex: 1;
+
+  font-weight: 300;
+  color: white;
+  line-height: 25px;
+  text-align: justify;
+}
+
+.no-comics-found p {
+  font-size: 42px;
+  color: white;
+  font-weight: 300;
+  margin-top: 100px;
+}

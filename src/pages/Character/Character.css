@@ -1,0 +1,42 @@
+.character--page {
+  padding-top: 100px;
+  width: 100%;
+  background-color: var(--light-black);
+  min-height: calc(100vh - 100px);
+}
+
+.character--container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.character--details {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid red;
+}
+
+.character--details > .image--container {
+  max-height: 252px;
+}
+
+.character--details > .image--container > img {
+  max-height: 100%;
+  object-fit: cover;
+}
+.character--details .character--description {
+  color: white;
+  font-size: 24px;
+  text-align: justify;
+  padding: 0 20px;
+  line-height: 30px;
+  flex: 1;
+}
+
+.character-category--separator {
+  width: 90%;
+  height: 1px;
+  background-color: white;
+  margin: 50px auto;
+}

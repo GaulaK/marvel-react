@@ -7,19 +7,20 @@ import PageCounter from "../../components/PageCounter";
 
 import "./Comics.css";
 
-const Comics = () => {
+const Comics = ({ search, page, setPage }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `https://site--marvel-backend--22v2k5v8dwyb.code.run/comics?page=${page}`
+          `https://site--marvel-backend--22v2k5v8dwyb.code.run/comics?page=${page}&search=${search}`
         );
+
         setData(response.data.data);
+
         // console.log(data);
         setIsLoading(false);
       } catch (error) {
@@ -27,7 +28,7 @@ const Comics = () => {
       }
     };
     fetchData();
-  }, [page]);
+  }, [page, search]);
 
   return (
     <>
@@ -36,6 +37,10 @@ const Comics = () => {
           <h2>Comics</h2>
           {isLoading ? (
             <Spinner />
+          ) : data.count <= 0 ? (
+            <p className="no-data-found-text">
+              Do you really know a comic with this name? Not us anyway...
+            </p>
           ) : (
             <>
               <PageCounter page={page} setPage={setPage} count={data.count} />

@@ -12,16 +12,26 @@ import Header from "./components/Header";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCircleLeft, faCircleRight } from "@fortawesome/free-solid-svg-icons";
 import Comics from "./pages/Comics";
+import { useState } from "react";
+
 library.add(faCircleLeft, faCircleRight);
 
 function App() {
+  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
   return (
     <Router>
-      <Header />
+      <Header search={search} setSearch={setSearch} setPage={setPage} />
       <Routes>
-        <Route path="/" element={<Characters />} />
+        <Route
+          path="/"
+          element={<Characters search={search} page={page} setPage={setPage} />}
+        />
         <Route path="/character/:id" element={<Character />} />
-        <Route path="/comics" element={<Comics />} />
+        <Route
+          path="/comics"
+          element={<Comics search={search} page={page} setPage={setPage} />}
+        />
       </Routes>
     </Router>
   );

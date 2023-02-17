@@ -1,8 +1,10 @@
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import SearchBar from "../SearchBar";
 const logoMarvel = require("../../assets/img/logo-marvel.png");
 
-const Header = () => {
+const Header = ({ search, setSearch, setPage }) => {
+  const location = useLocation();
   return (
     <header>
       <div className="header--container">
@@ -15,6 +17,23 @@ const Header = () => {
             />
           </Link>
         </div>
+        {location.pathname === "/" && (
+          <SearchBar
+            search={search}
+            setSearch={setSearch}
+            type={"characters"}
+            setPage={setPage}
+          />
+        )}
+        {location.pathname === "/comics" && (
+          <SearchBar
+            search={search}
+            setSearch={setSearch}
+            type={"comics"}
+            setPage={setPage}
+          />
+        )}
+
         <nav className="navigation-bar">
           <Link className="navigation-button" to="/">
             Characters

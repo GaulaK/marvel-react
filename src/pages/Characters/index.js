@@ -7,17 +7,16 @@ import PageCounter from "../../components/PageCounter";
 
 import "./Characters.css";
 
-const Characters = () => {
+const Characters = ({ search, page, setPage }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `https://site--marvel-backend--22v2k5v8dwyb.code.run/characters?page=${page}`
+          `https://site--marvel-backend--22v2k5v8dwyb.code.run/characters?page=${page}&search=${search}`
         );
         setData(response.data.data);
 
@@ -27,7 +26,8 @@ const Characters = () => {
       }
     };
     fetchData();
-  }, [page]);
+  }, [page, search]);
+  console.log(data);
 
   return (
     <>
@@ -36,6 +36,10 @@ const Characters = () => {
           <h2>Characters</h2>
           {isLoading ? (
             <Spinner />
+          ) : data.count <= 0 ? (
+            <p className="no-data-found-text">
+              Do you really know a character with this name? Not us anyway...
+            </p>
           ) : (
             <>
               <PageCounter page={page} setPage={setPage} count={data.count} />

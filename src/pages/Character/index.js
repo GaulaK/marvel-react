@@ -6,6 +6,7 @@ import ComicsList from "../../components/ComicsList";
 
 import "./Character.css";
 import isValidImage from "../../util/isValidImage";
+import Spinner from "../../components/Spinner";
 
 const Character = () => {
   const [data, setData] = useState(null);
@@ -33,7 +34,9 @@ const Character = () => {
   // console.log(data?.thumbnail);
 
   return isLoading ? (
-    <p>Loading.</p>
+    <div className="character--page">
+      <Spinner />
+    </div>
   ) : (
     <div className="character--page">
       <div className="character--container">
@@ -52,7 +55,7 @@ const Character = () => {
           {data.description && (
             <p className="character--description">{data.description}</p>
           )}
-        </div>{" "}
+        </div>
         <div className="character-category--separator"></div>
         <ComicsList data={data.comics} />
       </div>

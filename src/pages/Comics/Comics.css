@@ -22,3 +22,9 @@
   flex-wrap: wrap;
   padding: 30px;
 }
+
+.no-data-found-text {
+  color: white;
+  font-weight: 300;
+  font-size: 42px;
+}

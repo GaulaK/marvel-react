@@ -12,6 +12,7 @@
   width: 200px;
   background-color: var(--black);
   padding: 0 15px;
+  height: 100%;
 }
 
 /* .comic-card--container:hover {

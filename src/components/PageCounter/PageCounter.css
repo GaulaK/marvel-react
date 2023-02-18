@@ -12,6 +12,7 @@
   background-color: white;
   border-radius: 50%;
   padding: 1px;
+  cursor: pointer;
 }
 
 .page-counter p {

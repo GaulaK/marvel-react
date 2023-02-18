@@ -59,6 +59,7 @@ const Comics = ({ search, page, setPage }) => {
                   })}
                 </ul>
               )}
+              <PageCounter page={page} setPage={setPage} count={data.count} />
             </>
           )}
         </div>

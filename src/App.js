@@ -10,11 +10,15 @@ import Header from "./components/Header";
 
 //Icons
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faCircleLeft, faCircleRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleLeft,
+  faCircleRight,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 import Comics from "./pages/Comics";
 import { useState } from "react";
 
-library.add(faCircleLeft, faCircleRight);
+library.add(faCircleLeft, faCircleRight, faMagnifyingGlass);
 
 function App() {
   const [search, setSearch] = useState("");

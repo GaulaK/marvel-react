@@ -32,33 +32,36 @@ const Character = () => {
 
   // console.log(data);
   // console.log(data?.thumbnail);
-
-  return isLoading ? (
+  return (
     <div className="character--page">
-      <Spinner />
-    </div>
-  ) : (
-    <div className="character--page">
-      <div className="character--container">
-        <h2>{data.name}</h2>
-        <div className="character--details">
-          {isValidImage(
-            `${data.thumbnail.path}/portrait_fantastic.${data.thumbnail.extension}`
-          ) && (
-            <div className="image--container">
-              <img
-                alt={`${data.name}`}
-                src={`${data.thumbnail.path}/portrait_fantastic.${data.thumbnail.extension}`}
-              />
-            </div>
-          )}
-          {data.description && (
-            <p className="character--description">{data.description}</p>
-          )}
+      {isLoading ? (
+        <div className="character--page">
+          <Spinner />
         </div>
-        <div className="character-category--separator"></div>
-        <ComicsList data={data.comics} />
-      </div>
+      ) : (
+        <div className="character--page">
+          <div className="character--container">
+            <h2>{data.name}</h2>
+            <div className="character--details">
+              {isValidImage(
+                `${data.thumbnail.path}/portrait_fantastic.${data.thumbnail.extension}`
+              ) && (
+                <div className="image--container">
+                  <img
+                    alt={`${data.name}`}
+                    src={`${data.thumbnail.path}/portrait_fantastic.${data.thumbnail.extension}`}
+                  />
+                </div>
+              )}
+              {data.description && (
+                <p className="character--description">{data.description}</p>
+              )}
+            </div>
+            <div className="character-category--separator"></div>
+            <ComicsList data={data.comics} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

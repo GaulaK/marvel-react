@@ -27,7 +27,6 @@ const Characters = ({ search, page, setPage }) => {
     };
     fetchData();
   }, [page, search]);
-  console.log(data);
 
   return (
     <>
@@ -58,6 +57,7 @@ const Characters = ({ search, page, setPage }) => {
                   })}
                 </ul>
               )}
+              <PageCounter page={page} setPage={setPage} count={data.count} />
             </>
           )}
         </div>

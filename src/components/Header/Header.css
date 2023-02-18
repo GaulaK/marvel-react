@@ -51,3 +51,65 @@ header {
   text-align: center;
   border-radius: 8px;
 }
+
+.category--navigation-bar {
+  height: auto;
+  width: auto;
+  display: flex;
+}
+
+.category--navigation-bar .category--navigation-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  border: 1px solid #333333;
+  text-decoration: none;
+  color: white;
+  font-weight: 300;
+  font-size: 18px;
+  padding: 0 30px;
+  cursor: pointer;
+}
+
+.category--navigation-bar .category--navigation-button:first-child {
+  border-radius: 15px 0 0 15px;
+}
+
+.category--navigation-bar .category--navigation-button:last-child {
+  border-radius: 0 15px 15px 0;
+}
+
+.category--navigation-bar .category--navigation-button.selected {
+  background-color: #2c2e2e;
+  transition-duration: 0.7s;
+  /* -webkit-box-shadow: inset 0px 10px 27px -8px #141414,
+    inset 0px -10px 27px -8px var(--red), 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: inset 0px 10px 27px -8px #141414,
+    inset 0px -10px 27px -8px var(--red), 5px 5px 15px 5px rgba(0, 0, 0, 0); */
+}
+.category--navigation-bar .category--navigation-button.not-selected {
+  transition-duration: 0.7s;
+  background-color: var(--black);
+}
+
+.account-buttons--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.account-buttons--container .login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 41px;
+  width: 41px;
+  border-radius: 50%;
+  color: white;
+  border: 1px solid #333333;
+  background-color: #2c2e2e;
+  cursor: pointer;
+}

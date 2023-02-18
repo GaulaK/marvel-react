@@ -1,0 +1,70 @@
+.login--form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.login--form > input {
+  height: 35px;
+  border-radius: 8px;
+  background-color: var(--light-black);
+  color: white;
+  border: 1px solid #333333;
+  outline: none;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 300;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.login--form > input::placeholder {
+  color: white;
+}
+
+.login--form label {
+  color: white;
+  margin: 10px;
+  font-weight: 300;
+}
+
+.form--login-button {
+  width: 50%;
+  height: 45px;
+  margin: 20px auto 0;
+
+  background-color: var(--red);
+  font-family: inherit;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+}
+
+.ready {
+  cursor: pointer;
+}
+
+.forbidden {
+  background-color: var(--light-black);
+  cursor: wait;
+}
+
+.not-account--button {
+  color: white;
+  font-size: 12px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.error--login {
+  color: red;
+  font-size: 16px;
+}
+
+.title-form {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 10px;
+}

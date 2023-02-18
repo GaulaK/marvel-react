@@ -11,11 +11,11 @@
   max-width: 1440px;
   /* width: 1440px; */
   margin: auto;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 .comics-list {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   gap: 50px;
   display: flex;
   justify-content: center;

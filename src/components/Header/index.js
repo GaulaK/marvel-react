@@ -1,9 +1,10 @@
 import "./Header.css";
 import { Link, useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const logoMarvel = require("../../assets/img/logo-marvel.png");
 
-const Header = ({ search, setSearch, setPage }) => {
+const Header = ({ search, setSearch, setPage, setModalContent, token }) => {
   const location = useLocation();
   return (
     <header>
@@ -35,16 +36,42 @@ const Header = ({ search, setSearch, setPage }) => {
         )}
 
         <nav className="navigation-bar">
-          <Link className="navigation-button" to="/">
-            Characters
-          </Link>
-          <Link className="navigation-button" to="/comics">
-            Comics
-          </Link>
-          <Link className="navigation-button" to="/">
-            Favorites
-          </Link>
+          <div className="category--navigation-bar">
+            <Link
+              className={`category--navigation-button ${
+                location.pathname === "/" ? "selected" : "not-selected"
+              }`}
+              to="/"
+            >
+              Characters
+            </Link>
+            <Link
+              className={`category--navigation-button ${
+                location.pathname === "/comics" ? "selected" : "not-selected"
+              }`}
+              to="/comics"
+            >
+              Comics
+            </Link>
+          </div>
         </nav>
+        <div className="account-buttons--container">
+          {token ? (
+            <Link className="account-button" to="/">
+              Favorites
+            </Link>
+          ) : (
+            <button
+              className="login-button"
+              onClick={() => {
+                setModalContent("login");
+                document.body.style.overflow = "hidden";
+              }}
+            >
+              <FontAwesomeIcon icon="fa-solid fa-user" />
+            </button>
+          )}
+        </div>
       </div>
     </header>
   );

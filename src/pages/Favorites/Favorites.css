@@ -11,3 +11,36 @@
   margin: auto;
   border: 1px solid green;
 }
+
+.favorites-characters--title {
+  text-align: start;
+  font-weight: 300;
+  padding-left: 30px;
+}
+
+.favorites-comics--title {
+  text-align: end;
+  font-weight: 300;
+  padding-right: 30px;
+}
+
+.no-favorites-text {
+  color: white;
+  text-align: center;
+}
+
+.favorites-card--container {
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 50px;
+  overflow-x: scroll;
+  flex-shrink: 0;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.favorites-card--container::-webkit-scrollbar {
+  display: none;
+}

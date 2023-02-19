@@ -165,7 +165,10 @@ function App() {
             />
           }
         />
-        <Route path="/favorites" element={<Favorites token={token} />} />
+        <Route
+          path="/favorites"
+          element={<Favorites token={token} favorites={favorites} />}
+        />
       </Routes>
       {modalContent && (
         <Modal

@@ -53,30 +53,30 @@ const Header = ({
         <div className="header-right--container">
           <nav className="navigation-bar">
             <div className="category--navigation-bar">
-              <a
+              <Link
+                to="/"
                 className={`category--navigation-button ${
                   location.pathname === "/" ? "selected" : "not-selected"
                 }`}
                 onClick={() => {
                   setSearch("");
                   setPage(1);
-                  navigate("/");
                 }}
               >
                 Characters
-              </a>
-              <a
+              </Link>
+              <Link
+                to="/comics"
                 className={`category--navigation-button ${
                   location.pathname === "/comics" ? "selected" : "not-selected"
                 }`}
                 onClick={() => {
                   setSearch("");
                   setPage(1);
-                  navigate("/comics");
                 }}
               >
                 Comics
-              </a>
+              </Link>
               {token && (
                 <Link
                   className={`category--navigation-button ${

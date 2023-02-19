@@ -1,7 +1,7 @@
 import "./Header.css";
 
 // Packages
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Components
@@ -19,7 +19,7 @@ const Header = ({
   updateToken,
 }) => {
   const location = useLocation();
-  const navigate = useNavigate();
+
   return (
     <header>
       <div className="header--container">

@@ -2,18 +2,19 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { useState, useEffect } from "react";
 
-//Pages
+// Pages
 import Characters from "./pages/Characters";
 import Character from "./pages/Character";
 import Comics from "./pages/Comics";
 import Favorites from "./pages/Favorites";
 
-//Components
+// Components
 import Header from "./components/Header";
 import Modal from "./components/Modal";
 
-//Icons
+// Icons
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faCircleLeft,
@@ -25,7 +26,6 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
-import { useState, useEffect } from "react";
 
 library.add(
   faCircleLeft,
@@ -44,7 +44,6 @@ function App() {
   const [modalContent, setModalContent] = useState(false);
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [favorites, setFavorites] = useState(null);
-  const [isLoadingFavorites, setIsLoadingFavorites] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,7 +57,6 @@ function App() {
             { headers: { Authorization: "Bearer " + token } }
           );
 
-          // console.log(response.data);
           setFavorites(response.data);
         }
       } catch (error) {
@@ -66,9 +64,7 @@ function App() {
       }
     };
 
-    setIsLoadingFavorites(true);
     fetchData();
-    setIsLoadingFavorites(false);
   }, [token]);
 
   const updateToken = (token) => {
@@ -82,7 +78,6 @@ function App() {
   };
 
   const addFavorite = async (type, newFavorite) => {
-    console.log(type, newFavorite, token);
     if (token) {
       if (type === "characters" || type === "comics") {
         const data = {};
@@ -94,7 +89,6 @@ function App() {
             { headers: { Authorization: "Bearer " + token } }
           );
           const newFavorites = response.data.favorites;
-          console.log(newFavorites);
           setFavorites(newFavorites);
         } catch (error) {
           console.log(error);
@@ -116,7 +110,7 @@ function App() {
           );
 
           const newFavorites = response.data.favorites;
-          console.log(newFavorites);
+
           setFavorites(newFavorites);
         } catch (error) {
           console.log(error);
@@ -146,7 +140,8 @@ function App() {
               addFavorite={addFavorite}
               removeFavorite={removeFavorite}
               favorites={favorites}
-              isLoadingFavorites={isLoadingFavorites}
+              setModalContent={setModalContent}
+              token={token}
             />
           }
         />
@@ -161,7 +156,8 @@ function App() {
               addFavorite={addFavorite}
               removeFavorite={removeFavorite}
               favorites={favorites}
-              isLoadingFavorites={isLoadingFavorites}
+              setModalContent={setModalContent}
+              token={token}
             />
           }
         />

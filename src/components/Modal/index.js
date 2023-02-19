@@ -1,7 +1,11 @@
 import "./Modal.css";
+
+// Packages
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// Components
 import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Modal = ({ modalContent, setModalContent, updateToken }) => {
   return (

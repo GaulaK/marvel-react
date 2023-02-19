@@ -10,7 +10,6 @@
   align-items: center;
   width: 200px;
   height: 200px;
-  /* border: 1px solid red; */
   -webkit-box-shadow: 0px 0px 50px 6px rgba(0, 0, 0, 0.7);
   box-shadow: 0px 0px 50px 6px rgba(0, 0, 0, 0.7);
   cursor: pointer;
@@ -37,7 +36,6 @@
   position: absolute;
   top: 5px;
   left: 5px;
-  /* border: 1px solid red; */
 }
 
 .fav-icon--container .not-favorite {

@@ -1,11 +1,13 @@
+import "./Comics.css";
+
+// Packages
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+// Components
 import ComicCard from "../../components/ComicCard";
 import Spinner from "../../components/Spinner";
 import PageCounter from "../../components/PageCounter";
-
-import "./Comics.css";
 
 const Comics = ({
   search,
@@ -14,7 +16,8 @@ const Comics = ({
   addFavorite,
   removeFavorite,
   favorites,
-  isLoadingFavorites,
+  setModalContent,
+  token,
 }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -26,10 +29,7 @@ const Comics = ({
         const response = await axios.get(
           `https://site--marvel-backend--22v2k5v8dwyb.code.run/comics?page=${page}&search=${search}`
         );
-
         setData(response.data.data);
-
-        // console.log(data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -58,15 +58,12 @@ const Comics = ({
                     return (
                       <ComicCard
                         key={element._id}
-                        id={element._id}
-                        ComicName={element.title}
-                        description={element.description}
-                        thumbnail={element.thumbnail}
                         comic={element}
                         addFavorite={addFavorite}
                         removeFavorite={removeFavorite}
                         favorites={favorites}
-                        isLoadingFavorites={isLoadingFavorites}
+                        setModalContent={setModalContent}
+                        token={token}
                       />
                     );
                   })}

@@ -1,5 +1,9 @@
-import { Navigate } from "react-router-dom";
 import "./Favorites.css";
+
+// Packages
+import { Navigate } from "react-router-dom";
+
+// Components
 import FavoriteCard from "../../components/FavoriteCard";
 import Spinner from "../../components/Spinner";
 

@@ -1,6 +1,10 @@
 import "./FavoriteCard.css";
-import defaultImage from "../../assets/img/logo-marvel.png";
+
+// Utils
 import isValidImage from "../../util/isValidImage";
+
+// Default Image
+import defaultImage from "../../assets/img/logo-marvel.png";
 
 const FavoriteCard = ({ element, type }) => {
   const thumbnail = `${element.thumbnail.path}/portrait_uncanny.${element.thumbnail.extension}`;
@@ -15,9 +19,7 @@ const FavoriteCard = ({ element, type }) => {
                 alt={element.title}
                 src={thumbnail}
                 onError={(event) => {
-                  // event.target.style.display = "none";
                   event.target.setAttribute("src", defaultImage);
-                  // event.target.addClass("gray-filter");
                 }}
               ></img>
             </div>
@@ -36,9 +38,7 @@ const FavoriteCard = ({ element, type }) => {
                 alt={element.name}
                 src={thumbnail}
                 onError={(event) => {
-                  // event.target.style.display = "none";
                   event.target.setAttribute("src", defaultImage);
-                  // event.target.addClass("gray-filter");
                 }}
               ></img>
             </div>

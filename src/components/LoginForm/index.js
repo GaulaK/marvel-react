@@ -1,4 +1,6 @@
 import "./LoginForm.css";
+
+// Packages
 import { useState } from "react";
 import axios from "axios";
 
@@ -32,12 +34,10 @@ const LoginForm = ({ setModalContent, updateToken }) => {
           `https://site--marvel-backend--22v2k5v8dwyb.code.run/user/login`,
           userInfo
         );
-        console.log(response);
         if (response.data?.token) {
           updateToken(response.data.token);
           setModalContent(false);
           document.body.style.overflow = "unset";
-          // navigate page favori
           setWaitLogin(false);
         } else {
           setErrorLogin("aled !? The dev' doesnt know why you aren't log");
@@ -61,6 +61,7 @@ const LoginForm = ({ setModalContent, updateToken }) => {
           name="email"
           type="email"
           value={email}
+          autoComplete="off"
           onChange={handleEmailChange}
         />
         <label forhtml="password">Password</label>
@@ -68,6 +69,7 @@ const LoginForm = ({ setModalContent, updateToken }) => {
           name="password"
           type="password"
           value={password}
+          autoComplete="off"
           onChange={handlePasswordChange}
         />
         <button

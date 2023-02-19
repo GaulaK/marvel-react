@@ -1,9 +1,12 @@
 import "./CharacterCard.css";
 
-import isValidImage from "../../util/isValidImage";
+// Packages
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// Utils
+import isValidImage from "../../util/isValidImage";
 
 const includesID = (favorites, target) => {
   for (let index = 0; index < favorites.length; index++) {
@@ -14,48 +17,58 @@ const includesID = (favorites, target) => {
   return false;
 };
 const CharacterCard = ({
-  id,
-  characterName,
-  description,
-  thumbnail,
   addFavorite,
   removeFavorite,
   favorites,
-  isLoadingFavorites,
   character,
+  token,
+  setModalContent,
 }) => {
   const navigate = useNavigate();
-  const thumnailCharacter = `${thumbnail.path}/standard_medium.${thumbnail.extension}`;
+  const thumnailCharacter = `${character.thumbnail.path}/standard_medium.${character.thumbnail.extension}`;
   return (
     <li className="character-card">
-      <Link style={{ textDecoration: "none" }} to={`/character/${id}`}>
+      <Link
+        style={{ textDecoration: "none" }}
+        to={`/character/${character._id}`}
+      >
         <div
           className="character-card--container"
           onClick={() => {
-            // console.log(id);
-            navigate(`/character/${id}`);
+            navigate(`/character/${character._id}`);
           }}
         >
-          <h3>{characterName}</h3>
+          <h3>{character.name}</h3>
           {isValidImage(thumnailCharacter) && (
             <div className="character-card-image--container">
-              <img alt={characterName} src={thumnailCharacter}></img>
+              <img alt={character.name} src={thumnailCharacter}></img>
             </div>
           )}
         </div>
       </Link>
       <div className="fav-icon--container">
-        {/* {console.log("oui", favorites ? favorites : "not yet")} */}
         {favorites ? (
-          includesID(favorites["characters"], id) ? (
+          includesID(favorites["characters"], character._id) ? (
             <FontAwesomeIcon
-              onClick={() => removeFavorite("characters", character)}
+              onClick={() => {
+                if (token) {
+                  removeFavorite("characters", character);
+                } else {
+                  setModalContent("login");
+                }
+              }}
               className="favorite"
               icon="fa-star"
             />
           ) : (
             <FontAwesomeIcon
-              onClick={() => addFavorite("characters", character)}
+              onClick={() => {
+                if (token) {
+                  addFavorite("characters", character);
+                } else {
+                  setModalContent("login");
+                }
+              }}
               className="not-favorite"
               icon="fa-regular fa-star"
             />

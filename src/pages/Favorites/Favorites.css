@@ -9,7 +9,7 @@
   max-width: 1440px;
   /* width: 1440px; */
   margin: auto;
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 .favorites-characters--title {
@@ -30,7 +30,7 @@
 }
 
 .favorites-card--container {
-  border: 1px solid red;
+  border-bottom: 2px solid var(--red);
   display: flex;
   flex-wrap: nowrap;
   gap: 50px;

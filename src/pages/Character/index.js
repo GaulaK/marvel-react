@@ -1,12 +1,19 @@
-import { useParams } from "react-router-dom";
+import "./Character.css";
+
+// Packages
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+// Components
 import ComicsList from "../../components/ComicsList";
-
-import "./Character.css";
-import isValidImage from "../../util/isValidImage";
 import Spinner from "../../components/Spinner";
+
+// Utils
+import isValidImage from "../../util/isValidImage";
+
+// Default Image
+import defaultImage from "../../assets/img/logo-marvel.png";
 
 const Character = () => {
   const [data, setData] = useState(null);
@@ -19,7 +26,6 @@ const Character = () => {
       try {
         const response = await axios.get(
           `https://site--marvel-backend--22v2k5v8dwyb.code.run/comics/${id}`
-          //character/${characterId}
         );
         setData(response.data.data);
         setIsLoading(false);
@@ -30,8 +36,6 @@ const Character = () => {
     fetchData();
   }, [id]);
 
-  // console.log(data);
-  // console.log(data?.thumbnail);
   return (
     <div className="character--page">
       {isLoading ? (
@@ -50,6 +54,9 @@ const Character = () => {
                   <img
                     alt={`${data.name}`}
                     src={`${data.thumbnail.path}/portrait_fantastic.${data.thumbnail.extension}`}
+                    onError={(event) => {
+                      event.target.setAttribute("src", defaultImage);
+                    }}
                   />
                 </div>
               )}

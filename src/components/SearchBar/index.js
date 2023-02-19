@@ -1,5 +1,6 @@
 import "./SearchBar.css";
 
+// Packages
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SearchBar = ({ search, setSearch, type, setPage }) => {

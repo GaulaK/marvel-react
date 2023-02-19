@@ -1,9 +1,14 @@
 import "./ComicCard.css";
+
+// Packages
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+// Default Image
 import defaultImage from "../../assets/img/logo-marvel.png";
 
+// Utils
 import isValidImage from "../../util/isValidImage";
 import setDescriptionInHTML from "../../util/setDescriptionInHTML";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const includesID = (favorites, target) => {
   for (let index = 0; index < favorites.length; index++) {
@@ -14,53 +19,59 @@ const includesID = (favorites, target) => {
   return false;
 };
 const ComicCard = ({
-  id,
-  ComicName,
-  description,
-  thumbnail,
   addFavorite,
   removeFavorite,
   favorites,
-  isLoadingFavorites,
   comic,
+  setModalContent,
+  token,
 }) => {
-  const thumnailComic = `${thumbnail.path}/portrait_fantastic.${thumbnail.extension}`;
+  const thumnailComic = `${comic.thumbnail.path}/portrait_fantastic.${comic.thumbnail.extension}`;
   return (
     <li className="comic-card">
       <div className="comic-card--container">
         {isValidImage(thumnailComic) ? (
           <div className="comic-card-image--container">
             <img
-              alt={ComicName}
+              alt={comic.title}
               src={thumnailComic}
               onError={(event) => {
-                // event.target.style.display = "none";
                 event.target.setAttribute("src", defaultImage);
-                // event.target.addClass("gray-filter");
               }}
             ></img>
           </div>
         ) : (
           <div className="comic-card-image--container">
-            <img alt={ComicName} src={defaultImage}></img>
+            <img alt={comic.title} src={defaultImage}></img>
           </div>
         )}
-        <h3>{ComicName}</h3>
+        <h3>{comic.title}</h3>
         <div className="comic-card-description--container">
-          {description ? setDescriptionInHTML(description) : null}
+          {comic.description ? setDescriptionInHTML(comic.description) : null}
         </div>
         <div className="fav-icon--container">
-          {/* {console.log("oui", favorites ? favorites : "not yet")} */}
           {favorites ? (
-            includesID(favorites["comics"], id) ? (
+            includesID(favorites["comics"], comic._id) ? (
               <FontAwesomeIcon
-                onClick={() => removeFavorite("comics", comic)}
+                onClick={() => {
+                  if (token) {
+                    removeFavorite("comics", comic);
+                  } else {
+                    setModalContent("login");
+                  }
+                }}
                 className="favorite"
                 icon="fa-star"
               />
             ) : (
               <FontAwesomeIcon
-                onClick={() => addFavorite("comics", comic)}
+                onClick={() => {
+                  if (token) {
+                    addFavorite("comics", comic);
+                  } else {
+                    setModalContent("login");
+                  }
+                }}
                 className="not-favorite"
                 icon="fa-regular fa-star"
               />

@@ -1,11 +1,13 @@
+import "./Characters.css";
+
+// Packages
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+// Components
 import CharacterCard from "../../components/CharacterCard";
 import Spinner from "../../components/Spinner";
 import PageCounter from "../../components/PageCounter";
-
-import "./Characters.css";
 
 const Characters = ({
   search,
@@ -14,7 +16,8 @@ const Characters = ({
   addFavorite,
   removeFavorite,
   favorites,
-  isLoadingFavorites,
+  setModalContent,
+  token,
 }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -27,7 +30,6 @@ const Characters = ({
           `https://site--marvel-backend--22v2k5v8dwyb.code.run/characters?page=${page}&search=${search}`
         );
         setData(response.data.data);
-
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -57,14 +59,11 @@ const Characters = ({
                       <CharacterCard
                         key={element._id}
                         character={element}
-                        id={element._id}
-                        characterName={element.name}
-                        description={element.description}
-                        thumbnail={element.thumbnail}
                         addFavorite={addFavorite}
                         removeFavorite={removeFavorite}
                         favorites={favorites}
-                        isLoadingFavorites={isLoadingFavorites}
+                        setModalContent={setModalContent}
+                        token={token}
                       />
                     );
                   })}

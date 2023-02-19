@@ -1,5 +1,6 @@
 import "./PageCounter.css";
 
+// Packages
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PageCounter = ({ page, setPage, count }) => {
@@ -18,7 +19,7 @@ const PageCounter = ({ page, setPage, count }) => {
       </div>
 
       <div className="page-counter--container">
-        <p>{page}</p>
+        <p>{`${page} / ${Math.ceil(count / 100)}`}</p>
       </div>
       <div className="page-counter--container">
         {page < count / 100 && (

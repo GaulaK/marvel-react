@@ -1,5 +1,6 @@
 import "./SignupForm.css";
 
+// Packages
 import { useState } from "react";
 import axios from "axios";
 
@@ -33,7 +34,7 @@ const SignupForm = ({ setModalContent, updateToken }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // console.log("click");
+
     setWaitSignUp(true);
     setErrorSignUp("");
     if (!username || !email || !password || !confirmPassword) {
@@ -51,12 +52,11 @@ const SignupForm = ({ setModalContent, updateToken }) => {
             `https://site--marvel-backend--22v2k5v8dwyb.code.run/user/signup`,
             userInfo
           );
-          console.log(response);
+
           if (response.data?.token) {
             updateToken(response.data.token);
             setModalContent(false);
             document.body.style.overflow = "unset";
-            // navigate page favori
             setWaitSignUp(false);
           } else {
             setErrorSignUp("aled !? The dev' doesnt know why you aren't log");
@@ -80,6 +80,7 @@ const SignupForm = ({ setModalContent, updateToken }) => {
           name="username"
           type="text"
           value={username}
+          autoComplete="off"
           onChange={handleUsernameChange}
         />
         <label forhtml="email">Email</label>
@@ -87,6 +88,7 @@ const SignupForm = ({ setModalContent, updateToken }) => {
           name="email"
           type="email"
           value={email}
+          autoComplete="off"
           onChange={handleEmailChange}
         />
         <label forhtml="password">Password</label>
@@ -94,6 +96,7 @@ const SignupForm = ({ setModalContent, updateToken }) => {
           name="password"
           type="password"
           value={password}
+          autoComplete="off"
           onChange={handlePasswordChange}
         />
         <label forhtml="confirmPassword">Confirm Password</label>
@@ -101,9 +104,9 @@ const SignupForm = ({ setModalContent, updateToken }) => {
           name="confirmPassword"
           type="password"
           value={confirmPassword}
+          autoComplete="off"
           onChange={handleConfirmPasswordChange}
         />
-        <p>{`${waitSignUp.toString()}`}</p>
         <button
           className={`form--signup-button ${
             waitSignUp ? "forbidden" : "ready"

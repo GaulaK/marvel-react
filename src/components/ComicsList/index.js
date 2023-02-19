@@ -1,10 +1,10 @@
 import "./ComicsList.css";
+
+// Utils
 import isValidImage from "../../util/isValidImage";
 import setDescriptionInHTML from "../../util/setDescriptionInHTML";
 
 const ComicsList = ({ data }) => {
-  // console.log(data);
-
   return !data.length ? (
     <div className="no-comics-found">
       <p>It seems that we don't have any comics with this character...</p>

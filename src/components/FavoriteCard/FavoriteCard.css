@@ -1,6 +1,6 @@
 .favorite-card {
   height: 500px;
-  border: 1px solid blue;
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

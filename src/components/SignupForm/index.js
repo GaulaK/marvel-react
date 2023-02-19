@@ -54,10 +54,12 @@ const SignupForm = ({ setModalContent, updateToken }) => {
           console.log(response);
           if (response.data?.token) {
             updateToken(response.data.token);
+            setModalContent(false);
+            document.body.style.overflow = "unset";
             // navigate page favori
             setWaitSignUp(false);
           } else {
-            setErrorSignUp("aled !? The dev' doesnt know you arent log");
+            setErrorSignUp("aled !? The dev' doesnt know why you aren't log");
           }
         } catch (error) {
           if (error.response.status === 409) {

@@ -7,7 +7,15 @@ import PageCounter from "../../components/PageCounter";
 
 import "./Comics.css";
 
-const Comics = ({ search, page, setPage }) => {
+const Comics = ({
+  search,
+  page,
+  setPage,
+  addFavorite,
+  removeFavorite,
+  favorites,
+  isLoadingFavorites,
+}) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -54,6 +62,11 @@ const Comics = ({ search, page, setPage }) => {
                         ComicName={element.title}
                         description={element.description}
                         thumbnail={element.thumbnail}
+                        comic={element}
+                        addFavorite={addFavorite}
+                        removeFavorite={removeFavorite}
+                        favorites={favorites}
+                        isLoadingFavorites={isLoadingFavorites}
                       />
                     );
                   })}

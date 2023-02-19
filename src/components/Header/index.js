@@ -4,7 +4,14 @@ import SearchBar from "../SearchBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const logoMarvel = require("../../assets/img/logo-marvel.png");
 
-const Header = ({ search, setSearch, setPage, setModalContent, token }) => {
+const Header = ({
+  search,
+  setSearch,
+  setPage,
+  setModalContent,
+  token,
+  updateToken,
+}) => {
   const location = useLocation();
   return (
     <header>
@@ -53,13 +60,30 @@ const Header = ({ search, setSearch, setPage, setModalContent, token }) => {
             >
               Comics
             </Link>
+            {token && (
+              <Link
+                className={`category--navigation-button ${
+                  location.pathname === "/favorites"
+                    ? "selected"
+                    : "not-selected"
+                }`}
+                to="/favorites"
+              >
+                Favorites
+              </Link>
+            )}
           </div>
         </nav>
         <div className="account-buttons--container">
           {token ? (
-            <Link className="account-button" to="/">
-              Favorites
-            </Link>
+            <button
+              className="login-button"
+              onClick={() => {
+                updateToken(null);
+              }}
+            >
+              <FontAwesomeIcon icon="fa-right-from-bracket" />
+            </button>
           ) : (
             <button
               className="login-button"
@@ -68,7 +92,7 @@ const Header = ({ search, setSearch, setPage, setModalContent, token }) => {
                 document.body.style.overflow = "hidden";
               }}
             >
-              <FontAwesomeIcon icon="fa-solid fa-user" />
+              <FontAwesomeIcon icon="fa-user" />
             </button>
           )}
         </div>

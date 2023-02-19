@@ -7,7 +7,15 @@ import PageCounter from "../../components/PageCounter";
 
 import "./Characters.css";
 
-const Characters = ({ search, page, setPage }) => {
+const Characters = ({
+  search,
+  page,
+  setPage,
+  addFavorite,
+  removeFavorite,
+  favorites,
+  isLoadingFavorites,
+}) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,7 +35,6 @@ const Characters = ({ search, page, setPage }) => {
     };
     fetchData();
   }, [page, search]);
-
   return (
     <>
       <div className="characters--page">
@@ -42,16 +49,22 @@ const Characters = ({ search, page, setPage }) => {
           ) : (
             <>
               <PageCounter page={page} setPage={setPage} count={data.count} />
+
               {data.results && (
                 <ul className="characters-list">
                   {data.results.map((element) => {
                     return (
                       <CharacterCard
                         key={element._id}
+                        character={element}
                         id={element._id}
                         characterName={element.name}
                         description={element.description}
                         thumbnail={element.thumbnail}
+                        addFavorite={addFavorite}
+                        removeFavorite={removeFavorite}
+                        favorites={favorites}
+                        isLoadingFavorites={isLoadingFavorites}
                       />
                     );
                   })}

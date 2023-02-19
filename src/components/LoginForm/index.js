@@ -35,10 +35,12 @@ const LoginForm = ({ setModalContent, updateToken }) => {
         console.log(response);
         if (response.data?.token) {
           updateToken(response.data.token);
+          setModalContent(false);
+          document.body.style.overflow = "unset";
           // navigate page favori
           setWaitLogin(false);
         } else {
-          setErrorLogin("aled !? The dev' doesnt know you arent log");
+          setErrorLogin("aled !? The dev' doesnt know why you aren't log");
         }
       } catch (error) {
         console.log(error);

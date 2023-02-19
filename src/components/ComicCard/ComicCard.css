@@ -13,6 +13,7 @@
   background-color: var(--black);
   padding: 0 15px;
   height: 100%;
+  position: relative;
 }
 
 /* .comic-card--container:hover {
@@ -65,3 +66,18 @@
 /* .gray-filter {
   filter: grayscale(100%);
 } */
+
+.fav-icon--container {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  /* border: 1px solid red; */
+}
+
+.fav-icon--container .not-favorite {
+  color: #2c2e2e;
+}
+
+.fav-icon--container .favorite {
+  color: var(--red);
+}

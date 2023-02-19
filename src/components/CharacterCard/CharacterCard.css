@@ -1,5 +1,6 @@
 .character-card {
   width: auto;
+  position: relative;
 }
 
 .character-card--container {
@@ -30,4 +31,19 @@
 
 .character-card-image--container h3 {
   text-decoration: none;
+}
+
+.fav-icon--container {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  /* border: 1px solid red; */
+}
+
+.fav-icon--container .not-favorite {
+  color: #2c2e2e;
+}
+
+.fav-icon--container .favorite {
+  color: var(--red);
 }

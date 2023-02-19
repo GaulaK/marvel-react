@@ -30,6 +30,10 @@ const Header = ({
                 className="logo"
                 alt="Logo of Marvel write in white on a red background"
                 src={logoMarvel}
+                onClick={() => {
+                  setSearch("");
+                  setPage(1);
+                }}
               />
             </Link>
           </div>
